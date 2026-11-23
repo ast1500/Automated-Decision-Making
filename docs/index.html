@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="60"><title>Safirion Bot — Painel</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#14171c;--muted:#5f6b7a;--line:#e3e6ea;--accent:#2563eb;--buy:#15803d;--sell:#b91c1c;--warn:#b45309}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#171b21;--fg:#e7eaee;--muted:#98a2b3;--line:#2a3039;--accent:#60a5fa;--buy:#4ade80;--sell:#f87171;--warn:#fbbf24}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:16px}h1{font-size:20px;margin:0}h2{font-size:16px;margin:24px 0 8px}h3{margin:0;font-size:16px}
+.top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stat b{display:block;font-size:20px}.muted{color:var(--muted)}.small{font-size:12px}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid currentColor}
+.buy,.win{color:var(--buy)}.sell,.loss{color:var(--sell)}.none,.draw{color:var(--muted)}.open{color:var(--accent)}
+.on{color:var(--buy)}.off{color:var(--sell)}.warn{color:var(--warn)}
+.bar{display:grid;grid-template-columns:60px 1fr 32px;gap:8px;align-items:center;margin:4px 0}
+.track{height:8px;background:var(--line);border-radius:4px;overflow:hidden}.fill{height:100%}.fill.buy{background:var(--buy)}.fill.sell{background:var(--sell)}
+.reasons{margin:8px 0;padding-left:18px;font-size:13px}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:600}
+.kv{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line)}
+.chart{width:100%;height:160px}.notice{border-left:3px solid var(--warn)}
+</style></head><body><main>
+<div class="top"><h1>Safirion Bot · modo sinais</h1><span class="muted small">gerado 23/11/2026 23:25 UTC · atualiza a cada 60 s</span></div>
+
+<div class="card notice" style="margin-top:12px"><b>Execução manual.</b> A Safirion não oferece integração autorizada;
+o robô não envia ordens. Os sinais devem ser executados por você na conta DEMO, e o resultado registrado com
+<code>python -m safirion_bot record</code>. Resultados “simulados” usam cotações públicas (kraken), que podem diferir da Safirion.</div>
+
+<h2>Status</h2>
+<div class="stats">
+<div class="card stat"><span class="muted">Robô</span><b class="on">● online</b><span class="small muted">último ciclo 23/11 23:25 UTC</span></div>
+<div class="card stat"><span class="muted">Conta DEMO</span><b class="warn">não confirmada</b><span class="small muted">confirmação manual do usuário</span></div>
+<div class="card stat"><span class="muted">Saldo DEMO</span><b>10.000,00</b><span class="small muted">inicial 10.000,00</span></div>
+<div class="card stat"><span class="muted">Operações</span><b>0</b><span class="small muted">0 ganhos · 0 perdas</span></div>
+<div class="card stat"><span class="muted">Taxa de acerto</span><b>0.0%</b><span class="small muted">payout configurado 85%</span></div>
+</div>
+
+
+<h2>Mercados analisados</h2>
+<div class="grid">
+<article class="card">
+  <header><h3>BTCUSD <small>M15</small></h3>
+  <span class="pill none">SEM OPERAÇÃO</span></header>
+  <p class="muted small">candle 2026-11-23 23:00:00+00:00 · preço 61391.0</p>
+  <p>Tendência <b>lateral</b> · regime <b>consolidação</b> · setup <b>-</b>
+  </p>
+  <div class="bar"><span>Compra</span><div class="track"><div class="fill buy" style="width:53%"></div></div><b>53</b></div><div class="bar"><span>Venda</span><div class="track"><div class="fill sell" style="width:30%"></div></div><b>30</b></div>
+  <ul class="reasons"><li>MACD acelerando</li><li>rompeu nível de S/R</li><li>score 53 abaixo do mínimo 70</li></ul>
+  <details><summary>Indicadores</summary><table><tr><td>EMA 9 / 21</td><td>61231.809151 / 61357.485338</td></tr><tr><td>EMA 50 / 200</td><td>61521.135532 / 61038.843834</td></tr><tr><td>RSI 14</td><td>49.2</td></tr><tr><td>MACD / sinal / hist</td><td>-161.1 / -193.89 / 32.791</td></tr><tr><td>Bollinger sup / méd / inf</td><td>61512.4 / 61244.7 / 60977.1</td></tr><tr><td>ATR 14</td><td>303.6</td></tr><tr><td>ADX / +DI / −DI</td><td>22.9 / 17.1 / 22.5</td></tr><tr><td>Suporte / Resistência</td><td>61204.95 / 61474.1</td></tr><tr><td>Padrões</td><td>—</td></tr></table></details>
+</article>
+<article class="card">
+  <header><h3>BTCUSD <small>M5</small></h3>
+  <span class="pill none">SEM OPERAÇÃO</span></header>
+  <p class="muted small">candle 2026-11-23 23:20:00+00:00 · preço 61332.1</p>
+  <p>Tendência <b>lateral</b> · regime <b>consolidação</b> · setup <b>-</b>
+  </p>
+  <div class="bar"><span>Compra</span><div class="track"><div class="fill buy" style="width:19%"></div></div><b>19</b></div><div class="bar"><span>Venda</span><div class="track"><div class="fill sell" style="width:55%"></div></div><b>55</b></div>
+  <ul class="reasons"><li>tocou resistência 61400</li><li>candle de reversão</li><li>score 55 abaixo do mínimo 70</li></ul>
+  <details><summary>Indicadores</summary><table><tr><td>EMA 9 / 21</td><td>61294.885375 / 61245.897812</td></tr><tr><td>EMA 50 / 200</td><td>61303.900554 / 61482.380869</td></tr><tr><td>RSI 14</td><td>54.7</td></tr><tr><td>MACD / sinal / hist</td><td>30.364 / -1.4559 / 31.82</td></tr><tr><td>Bollinger sup / méd / inf</td><td>61431.7 / 61212.7 / 60993.6</td></tr><tr><td>ATR 14</td><td>129.68</td></tr><tr><td>ADX / +DI / −DI</td><td>14.9 / 25.4 / 17.2</td></tr><tr><td>Suporte / Resistência</td><td>61237.666667 / 61399.771429</td></tr><tr><td>Padrões</td><td>engolfo_baixa, marubozu_baixa</td></tr></table></details>
+</article>
+<article class="card">
+  <header><h3>EURUSD <small>M15</small></h3>
+  <span class="pill none">SEM OPERAÇÃO</span></header>
+  <p class="muted small">candle 2026-11-23 23:00:00+00:00 · preço 1.09001</p>
+  <p>Tendência <b>baixa</b> · regime <b>consolidação</b> · setup <b>-</b>
+  </p>
+  <div class="bar"><span>Compra</span><div class="track"><div class="fill buy" style="width:16%"></div></div><b>16</b></div><div class="bar"><span>Venda</span><div class="track"><div class="fill sell" style="width:55%"></div></div><b>55</b></div>
+  <ul class="reasons"><li>tocou resistência 1.0905</li><li>candle de reversão</li><li>score 55 abaixo do mínimo 70</li></ul>
+  <details><summary>Indicadores</summary><table><tr><td>EMA 9 / 21</td><td>1.089759 / 1.089835</td></tr><tr><td>EMA 50 / 200</td><td>1.091246 / 1.094184</td></tr><tr><td>RSI 14</td><td>49.2</td></tr><tr><td>MACD / sinal / hist</td><td>-0.000287 / -0.000487 / 0.0002</td></tr><tr><td>Bollinger sup / méd / inf</td><td>1.09048 / 1.08956 / 1.08865</td></tr><tr><td>ATR 14</td><td>0.000545</td></tr><tr><td>ADX / +DI / −DI</td><td>30.5 / 24.1 / 24.9</td></tr><tr><td>Suporte / Resistência</td><td>1.08788 / 1.0905</td></tr><tr><td>Padrões</td><td>estrela_cadente</td></tr></table></details>
+</article></div>
+
+<h2>Risco do dia</h2>
+<div class="grid"><div class="card">
+<div class="kv"><span>Operações hoje</span><b>0 / 10</b></div>
+<div class="kv"><span>Perdas consecutivas</span><b>0 / 3</b></div>
+<div class="kv"><span>Resultado do dia</span><b>0,00</b></div>
+<div class="kv"><span>Limite de perda (5%) usado</span><b>0%</b></div>
+<div class="kv"><span>Meta (3%) atingida</span><b>0%</b></div>
+<div class="kv"><span>Valor por operação</span><b>100,00 (1%)</b></div>
+<div class="kv"><span>Martingale / Gale</span><b>desativado</b></div></div><div class="card"><b>Evolução do saldo</b><p class="muted">Sem operações liquidadas ainda.</p></div></div>
+
+<h2>Operações</h2>
+<div class="card scroll"><table><thead><tr><th>#</th><th>Abertura (UTC)</th><th>Ativo</th><th>Direção</th><th>Score</th><th>Valor</th>
+<th>Entrada</th><th>Saída</th><th>Status</th><th>Simulado</th><th>DEMO real</th><th>Print</th></tr></thead>
+<tbody><tr><td colspan="12" class="muted">Nenhuma operação.</td></tr></tbody></table></div>
+
+<h2>Backtests</h2>
+<div class="card scroll"><table><thead><tr><th>Mercado</th><th>Período</th><th>Operações</th><th>Acerto</th><th>Equilíbrio</th>
+<th>Retorno</th><th>Drawdown máx.</th><th>Profit factor</th></tr></thead>
+<tbody><tr><td>BTCUSD M15</td><td class="small">2026-09-22 11:15:00+00:00 → 2026-11-23 23:00:00+00:00</td>
+<td>403</td><td>44.7%</td>
+<td>54.0%</td>
+<td>-51.21%</td><td>51.21%</td><td>0.68</td></tr><tr><td>BTCUSD M5</td><td class="small">2026-11-03 03:20:00+00:00 → 2026-11-23 23:15:00+00:00</td>
+<td>161</td><td>46.6%</td>
+<td>54.0%</td>
+<td>-20.51%</td><td>25.12%</td><td>0.74</td></tr><tr><td>EURUSD M15</td><td class="small">2026-11-16 11:15:00+00:00 → 2026-11-23 23:00:00+00:00</td>
+<td>32</td><td>50.0%</td>
+<td>54.0%</td>
+<td>-2.51%</td><td>7.19%</td><td>0.85</td></tr></tbody></table></div>
+
+<h2>Histórico de análises</h2>
+<div class="card scroll"><table><thead><tr><th>Candle (UTC)</th><th>Ativo</th><th>Sinal</th><th>Score</th><th>Compra/Venda</th>
+<th>Tendência</th><th>Regime</th></tr></thead><tbody><tr><td>2026-11-23 23:00</td><td>EURUSD M15</td>
+<td>NONE</td><td>55</td><td>16/55</td><td>baixa</td>
+<td>consolidação</td></tr><tr><td>2026-11-23 23:00</td><td>BTCUSD M15</td>
+<td>NONE</td><td>53</td><td>53/30</td><td>lateral</td>
+<td>consolidação</td></tr><tr><td>2026-11-23 23:20</td><td>BTCUSD M5</td>
+<td>NONE</td><td>55</td><td>19/55</td><td>lateral</td>
+<td>consolidação</td></tr></tbody></table></div>
+</main></body></html>

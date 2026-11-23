@@ -1,0 +1,36 @@
+name: safirion-signals
+
+# Executa um ciclo do robô a cada 15 minutos (logo após o fechamento dos candles M15)
+# e grava banco + painel no repositório, para o estado sobreviver entre execuções.
+# Observação: o GitHub só dispara agendamentos a partir do branch padrão e pode
+# atrasar execuções em vários minutos.
+on:
+  schedule:
+    - cron: "1,16,31,46 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: safirion-signals
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m safirion_bot run
+      - name: Salvar estado
+        run: |
+          git config user.name "safirion-bot"
+          git config user.email "safirion-bot@users.noreply.github.com"
+          git add data/safirion.db docs/index.html
+          git diff --cached --quiet || git commit -m "bot: ciclo $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
